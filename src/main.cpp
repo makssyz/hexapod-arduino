@@ -4,25 +4,16 @@
 Legs legs;
 
 void setup() {
+    Serial.begin(9600);
+
     legs.init();
     legs.neutralize();
-//    legs.dance(30, 1000);
-//    for (int i = 0; i < 100; i++) {
-//        legs.dance(60, 500);
-//    }
-//    legs.walk_stance();
-    //legs.dance(30, 1000);
-
-    //legs.walk(4, 'f', 60, 20, 1000);
-
-    //int commands[] = {200, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60};
-
-    //legs.command_to_legs(commands);
+    legs.dance(2000);
 }
 
 void loop() {
-//    legs.dance(60, 1000);
-    //legs.walk(5, 'f', 60, 30, 500);
-    //legs.walk('f', 30, 1000);
+
+//    Serial.println(1);
+
 }
 
