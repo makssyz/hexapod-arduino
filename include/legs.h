@@ -87,4 +87,24 @@ public:
         int command[] = {0, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90};
         this->execute_command(command);
     }
+
+    /**
+     * Walk algorithm of the typical tripod gait for a single step.
+     */
+    void step() {
+        int step_forward[6][13] = {
+                {300, 120, 90, 60, 90, 120, 90, 120, 90, 60, 90, 120, 90},
+                {300, 120, 90, 60, 60, 120, 90, 120, 120, 60, 90, 120, 120},
+                {100, 60, 90, 120, 60, 60, 90, 60, 120, 120, 90, 60, 120},
+                {300, 60, 90, 120, 90, 60, 90, 60, 90, 120, 90, 60, 90},
+                {300, 60, 60, 120, 90, 60, 60, 60, 90, 120, 120, 60, 90},
+                {100, 120, 60, 60, 90, 120, 60, 120, 90, 60, 120, 120, 90},
+        };
+
+        int amount_of_commands = sizeof(step_forward) / sizeof(step_forward[0]);
+        execute_command_list(step_forward, amount_of_commands);
+    }
+
+
+
 };

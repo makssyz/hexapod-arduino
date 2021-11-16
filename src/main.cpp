@@ -8,7 +8,11 @@ void setup() {
 
     legs.init();
     legs.neutralize();
-    legs.dance(2000);
+//    for (int i = 0; i < 2; i++) {
+//        legs.step();
+//    }
+
+    legs.neutralize();
 }
 
 void loop() {
