@@ -22,14 +22,14 @@ public:
         leg_left_middle.init('l', 4, 5, 83, 86);
         leg_left_back.init('l', 6, 7, 92, 96);
         leg_right_front.init('r', 8, 9, 100, 79);
-        leg_right_middle.init('r', 10, 11, 94, 81);
+        leg_right_middle.init('r', 10, 11, 94, 110);
         leg_right_back.init('r', 12, 13, 87, 95);
     }
 
     /**
      * Executes a full list of commands one after the other, allowing for complex movements.
-     * @param command_list
-     * @param amount_of_commands
+     * @param command_list: 2D Array consisting of commands, including info on delay time and 12 servo angles.
+     * @param amount_of_commands: Integer that describes how many commands are in the command_list.
      */
     void execute_command_list(int command_list[][13], int amount_of_commands) {
         for (int command_index = 0; command_index < amount_of_commands; command_index++) {
@@ -91,7 +91,7 @@ public:
     /**
      * Walk algorithm of the typical tripod gait for a single step.
      */
-    void step() {
+    void step_forward() {
         int step_forward[6][13] = {
                 {300, 120, 90, 60, 90, 120, 90, 120, 90, 60, 90, 120, 90},
                 {300, 120, 90, 60, 60, 120, 90, 120, 120, 60, 90, 120, 120},
@@ -103,6 +103,23 @@ public:
 
         int amount_of_commands = sizeof(step_forward) / sizeof(step_forward[0]);
         execute_command_list(step_forward, amount_of_commands);
+    }
+
+    /**
+     * Walk algorithm of the typical tripod gait for a single step.
+     */
+    void step_backward() {
+        int step_backward[6][13] = {
+                {2000, 120, 90, 60, 90, 120, 90, 120, 90, 60, 90, 120, 90},
+                {2000, 120, 90, 60, 60, 120, 90, 120, 120, 60, 90, 120, 120},
+                {2000, 60, 90, 120, 60, 60, 90, 60, 120, 120, 90, 60, 120},
+                {2000, 60, 90, 120, 90, 60, 90, 60, 90, 120, 90, 60, 90},
+                {2000, 60, 60, 120, 90, 60, 60, 60, 90, 120, 120, 60, 90},
+                {2000, 120, 60, 60, 90, 120, 60, 120, 90, 60, 120, 120, 90},
+        };
+
+        int amount_of_commands = sizeof(step_backward) / sizeof(step_backward[0]);
+        execute_command_list(step_backward, amount_of_commands);
     }
 
 
